@@ -197,7 +197,16 @@ int main(int argc, const char * argv[]) {
         NSString *outputPath = [[NSUserDefaults standardUserDefaults] stringForKey:@"o"].stringByExpandingTildeInPath;
         
         if (!inputPath || !outputPath) {
-            NSLog(@"Please make sure to specify input and output paths.");
+            printf("Usage: iOSAssetExtractor -i <input path> -o <output path> [-g] [-t <file types>]\n");
+            printf("  -i <input path>  The input file or directory to export from. If a single file, just that file is exported. If a directory is given, the directory is searched for files to export.\n");
+            printf("  -o <output path> The directory that you want the images exported to.\n");
+            printf("  -g               Optional. Group the output by bundle.\n");
+            printf("  -t <file types>  Optional. The file types to export. Supported types are PDF, CAR, and PNG.\n");
+            printf("\n");
+            printf("Example: iOSAssetExtractor -i \"inputFileOrFolder\" -o \"outputDirectory\" -g 1 -t PDF,CAR,PNG\n");
+            printf("\n");
+            printf("Note: The iOSAssetExtractor executable must be next to the CARExtractor executable in order for the program to work.\n");
+            printf("\n");
             return 1;
         }
         
